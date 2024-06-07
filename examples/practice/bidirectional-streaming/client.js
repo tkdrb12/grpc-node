@@ -39,19 +39,13 @@ function recvMessage(call) {
   call.on('end', () => {
     console.log('Stream ended.');
   });
-
-  call.on('error', (err) => {
-    console.error('Stream error:', err);
-  });
 }
 
 function sendMessage(client) {
   const call = client.getServerResponse((error, response) => {
-    if (error) {
-      console.error('Error:', error);
-    } else {
-      console.log(`[server to client] ${response.getMessage()}`);
-    }
+    if (error) return console.error('Error:', error);
+
+    console.log(`[server to client] ${response.getMessage()}`);
   });
 
   generateMessages(call);

@@ -27,10 +27,13 @@ function getServerResponse(call) {
 function main() {
   const server = new grpc.Server();
   server.addService(ServerStreamingService, { getServerResponse });
-  const port = '0.0.0.0:50051';
-  server.bindAsync(port, grpc.ServerCredentials.createInsecure(), () => {
-    console.log(`Server running at ${port}`);
-  });
+  server.bindAsync(
+    '0.0.0.0:50051',
+    grpc.ServerCredentials.createInsecure(),
+    (_, port) => {
+      console.log(`Server running at ${port}`);
+    }
+  );
 }
 
 main();

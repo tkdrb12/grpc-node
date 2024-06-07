@@ -13,28 +13,18 @@ const getServerResponse = (call, callback) => {
   call.on('end', () => {
     var reply = new messages.Number();
     reply.setValue(count);
-
     callback(null, reply);
   });
 };
 
 function main() {
-  // Create a new gRPC server
   const server = new grpc.Server();
-
   server.addService(ClientStreamingService, { getServerResponse });
-  const port = '0.0.0.0:50051';
-
   server.bindAsync(
-    port,
+    '0.0.0.0:50051',
     grpc.ServerCredentials.createInsecure(),
-    (err, port) => {
-      if (err) {
-        console.error('Error starting server:', err);
-        return;
-      }
+    (_, port) => {
       console.log(`Server running at ${port}`);
-      server.start();
     }
   );
 }

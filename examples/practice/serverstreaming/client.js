@@ -13,11 +13,7 @@ function recvMessage(client) {
   });
 
   call.on('end', () => {
-    console.log('Stream ended.');
-  });
-
-  call.on('error', (err) => {
-    console.error('Stream error:', err);
+    console.log('Streaming ended!!');
   });
 }
 

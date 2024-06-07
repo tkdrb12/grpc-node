@@ -26,12 +26,10 @@ function generateMessages(call) {
 }
 
 function sendMessage(client) {
-  const call = client.getServerResponse((error, response) => {
-    if (error) {
-      console.error('Error:', error);
-    } else {
-      console.log(`[server to client] ${response.getValue()}`);
-    }
+  const call = client.getServerResponse((_, response) => {
+    if (error) return console.error('Error:', error);
+
+    console.log(`[server to client] ${response.getValue()}`);
   });
 
   generateMessages(call);

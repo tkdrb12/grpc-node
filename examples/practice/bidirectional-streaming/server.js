@@ -14,7 +14,6 @@ function getServerResponse(call) {
   let count = 0;
   call.on('data', async (response) => {
     count++;
-
     console.log(`[server to client] message #${count}`);
     const reply = makeMessage(response.getMessage());
     call.write(reply);

@@ -1,12 +1,11 @@
+var parseArgs = require('minimist');
 var messages = require('./hello_grpc_pb');
 var services = require('./hello_grpc_grpc_pb');
-
 var grpc = require('@grpc/grpc-js');
 
 function main() {
-  const target = 'localhost:50051';
   const client = new services.MyServiceClient(
-    target,
+    'localhost:50051',
     grpc.credentials.createInsecure()
   );
 
