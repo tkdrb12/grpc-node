@@ -9,11 +9,13 @@ function main() {
     grpc.credentials.createInsecure()
   );
 
+  const value = 4;
   const request = new messages.MyNumber();
-  request.setValue(4);
+  request.setValue(value);
+  console.log(`전송된 값: ${value}`);
 
   client.myFunction(request, function (err, response) {
-    console.log(response.getValue());
+    console.log(`계산 결과: ${response.getValue()}`);
   });
 }
 
