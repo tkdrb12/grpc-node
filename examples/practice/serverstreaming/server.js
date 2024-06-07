@@ -1,10 +1,10 @@
-var { Message, Number } = require('./serverstreaming_pb');
+var { Message } = require('./serverstreaming_pb');
 const { ServerStreamingService } = require('./serverstreaming_grpc_pb');
 
 const grpc = require('@grpc/grpc-js');
 
 function makeMessage(message) {
-  const msg = new messages.Message();
+  const msg = new Message();
   msg.setMessage(message);
   return msg;
 }

@@ -15,6 +15,10 @@ function recvMessage(client) {
   call.on('end', () => {
     console.log('Streaming ended!!');
   });
+
+  call.on('error', (error) => {
+    console.error('something was wrong!', error);
+  });
 }
 
 function main() {
