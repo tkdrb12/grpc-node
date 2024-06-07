@@ -17,7 +17,7 @@ function generateMessages(call) {
     makeMessage('message #5'),
   ];
 
-  // 테스트를 위해 1초 간격으로 메세지를 송신하도록 구현
+  // 테스트를 위해 0.5초 간격으로 메세지를 송신하도록 구현
   let index = 0;
   const intervalId = setInterval(() => {
     if (index < messages.length) {
