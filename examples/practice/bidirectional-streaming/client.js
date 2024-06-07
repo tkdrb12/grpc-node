@@ -17,7 +17,7 @@ function generateMessages(call) {
     makeMessage('message #5'),
   ];
 
-  // df
+  // 테스트를 위해 1초 간격으로 메세지를 송신하도록 구현
   let index = 0;
   const intervalId = setInterval(() => {
     if (index < messages.length) {
@@ -29,7 +29,9 @@ function generateMessages(call) {
       call.end();
     }
   }, 500);
+}
 
+function recvMessage(call) {
   call.on('data', (response) => {
     console.log(`[server to client] ${response.getMessage()}`);
   });
@@ -53,6 +55,7 @@ function sendMessage(client) {
   });
 
   generateMessages(call);
+  recvMessage(call);
 }
 
 function main() {

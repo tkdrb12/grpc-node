@@ -24,7 +24,6 @@ function getServerResponse(call) {
   call.end();
 }
 
-// Start the gRPC server
 function main() {
   const server = new grpc.Server();
   server.addService(ServerStreamingService, { getServerResponse });
